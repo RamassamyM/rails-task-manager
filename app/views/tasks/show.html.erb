@@ -1,0 +1,11 @@
+<h2>Task detail</h2>
+<h1><%= @task.description %></h1>
+<p>
+  <% if @task.done %>
+    <span>done </span>
+  <% else %>
+    <span>undone </span>
+  <% end %>
+</p>
+<p>Date of creation: <%= @task.created_at %></p>
+<p><%= link_to 'Back to index', tasks_path %></p>

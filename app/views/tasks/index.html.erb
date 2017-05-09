@@ -1,0 +1,32 @@
+<div class="wrapper padded">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <div class="header marged text-center">
+          <h1>My tasks</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 offset-sm-4">
+        <div class="wrapper-new padded">
+          <%= link_to 'Add a new task', new_task_path %>
+        </div>
+        <% @tasks.each do |task| %>
+            <div class="task-list marged">
+              <div>
+                <% if task.done %>
+                  <%= link_to '', mark_path(task), class: "fa  fa-check-circle fa-2x", method: :patch %>
+                <% else %>
+                  <%= link_to '', mark_path(task), class: "fa  fa-circle-o fa-2x", method: :patch %>
+                <% end %>
+              </div>
+               <div> <%= link_to task.description, task_path(task) %></div>
+                <div class="light-marged-left"><%= link_to '', edit_task_path(task), class: "fa  fa-pencil fa-2x" %>
+                  <%= link_to '', task_path(task), class: "fa  fa-trash-o fa-2x", method: :delete, data: { confirm: "Are you sure?" }%></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
